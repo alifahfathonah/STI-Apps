@@ -1,0 +1,26 @@
+body {
+    background-color: rgb(241, 241, 241);
+}
+
+.navbar-text {
+    font-size: 25px;
+}
+
+.list {
+    margin-top: 10px;
+    background-color: white;
+    padding: 10px;
+    width: 90%;
+    margin-left: 80px;
+    border-radius: 5px;
+    
+}
+
+.btn-success {
+    margin-right: 10px;
+    width: 80px;
+}
+
+.btn-danger {
+    width: 80px;
+}

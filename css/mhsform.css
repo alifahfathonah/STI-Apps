@@ -1,0 +1,44 @@
+body {
+    background-color: rgb(241, 241, 241);
+}
+
+.navbar-text {
+    font-size: 25px;
+}
+
+.list {
+    margin-top: 10px;
+    background-color: white;
+    padding: 10px;
+    width: 90%;
+    margin-left: 80px;
+    border-radius: 5px;
+    
+}
+
+.container {
+    margin-top: 20px;
+    width: auto;
+    height: 80%;
+    background-color: white;
+    border-radius: 10px;
+}
+
+.judul1 {
+    margin-top: 30px;
+    margin-bottom: 50px;
+    text-align: center;
+    font-size: 30px;
+}
+.judul3 {
+    margin-top: 50px;
+    margin-bottom: 50px;
+    font-size: small;
+    text-align: center;
+}
+
+.btn {
+    width: 100px;
+    margin-left: 200px;
+    margin-top: 20px;
+}
