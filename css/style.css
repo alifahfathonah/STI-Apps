@@ -1,0 +1,77 @@
+.container{
+    margin-top: 140px;
+    margin-left: 80px;
+    position: relative;
+    z-index: 2;
+}
+
+body {
+    background-color: rgb(254,207,40);
+}
+
+@font-face {
+    font-family: Truenolight;
+    src: url(../font/truenolt.otf)
+}
+
+@font-face {
+    font-family: Truenosemibold;
+    src: url(../font/truenosbd.otf)
+}
+
+
+h1, button {
+    font-family: Truenosemibold;
+}
+
+h2,h3 {
+    font-family: Truenolight;
+}
+
+.btn {
+    background-color: white;
+}
+
+button:hover {
+    background-color: rgb(242, 157, 83);
+    
+}
+
+.judul1 {
+    margin-bottom: 50px;
+}
+
+.judul2 {
+    margin-bottom: 60px;
+}
+
+.judul3 {
+    margin-top: 100px;
+}
+
+img {
+    margin-top: 60px;
+}
+
+.bg{
+    position: absolute;
+    z-index: 1;
+    margin-top: -210px;
+}
+
+.bg img{
+    height: 800px;
+    margin-left: 10px;
+}
+
+button {
+    font-size: 25px;
+    width: 150px;
+    height: 70px;
+    border-radius: 5px;
+    border-style: none;
+}
+
+.btn-masuk {
+    text-decoration: none;
+}
