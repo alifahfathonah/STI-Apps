@@ -20,7 +20,7 @@ body {
 }
 
 
-h1, button {
+h1, .btn {
     font-family: Truenosemibold;
 }
 
@@ -32,8 +32,9 @@ h2,h3 {
     background-color: white;
 }
 
-button:hover {
+.btn:hover {
     background-color: rgb(242, 157, 83);
+    color: white;
     
 }
 
@@ -64,14 +65,11 @@ img {
     margin-left: 10px;
 }
 
-button {
+.btn {
+    padding-top: 15px;
     font-size: 25px;
     width: 150px;
     height: 70px;
     border-radius: 5px;
     border-style: none;
-}
-
-.btn-masuk {
-    text-decoration: none;
 }
