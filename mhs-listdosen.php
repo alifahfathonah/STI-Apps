@@ -47,7 +47,8 @@
                 <ul class="isi-dropdown">
                     <li>
                         <a href="logout.php">
-                            <img src="asset/icon/logout.png" alt="" width="30" height="30">Logout</a></li>
+                        <img src="asset/icon/ic_log.png" alt="" width="66" height="30"></a>
+                    </li>
                 </ul>
             </li>
             <!-- <button type="button" class="btn btn-danger my-2">Keluar</button> -->

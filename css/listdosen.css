@@ -18,15 +18,15 @@ body {
 
 .collapse .dropdown .isi-dropdown {
     list-style-type: none;
-    margin-left: -25px;
+    margin-left: -40px;
     padding: 0;
     overflow: hidden;
 }
 .collapse .dropdown li a {
+    padding: 8px 14px;
     display: inline-block;
     color: white;
     text-align: center;
-    padding: 14px 16px;
     text-decoration: none;
 }
 li.dropdown {

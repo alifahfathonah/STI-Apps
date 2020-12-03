@@ -22,7 +22,7 @@ body {
 
 .collapse .dropdown .isi-dropdown {
     list-style-type: none;
-    margin-left: -25px;
+    margin-left: -35px;
     padding: 0;
     overflow: hidden;
 }
@@ -30,7 +30,7 @@ body {
     display: inline-block;
     color: white;
     text-align: center;
-    padding: 14px 16px;
+    padding: 8px 14px;
     text-decoration: none;
 }
 li.dropdown {

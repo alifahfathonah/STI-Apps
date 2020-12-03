@@ -45,7 +45,8 @@
                 <ul class="isi-dropdown">
                     <li>
                         <a href="#">
-                            <img src="asset/icon/logout.png" alt="" width="30" height="30">Logout</a></li>
+                        <img src="asset/icon/ic_log.png" alt="" width="65" height="30"></a>
+                    </li>
                 </ul>
             </li>
         </div>
