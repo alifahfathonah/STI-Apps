@@ -1,12 +1,13 @@
 .container{
-    margin-top: 140px;
-    margin-left: 80px;
+    margin-top: 70px;
+    margin-left: 50px;
     position: relative;
     z-index: 2;
 }
 
 body {
-    background-color: rgb(254,207,40);
+    background-color: #F8F8F0;
+    /* background-color: rgb(254,207,40); */
 }
 
 @font-face {
@@ -19,7 +20,13 @@ body {
     src: url(../font/truenosbd.otf)
 }
 
-
+.logo h3{
+    float: right;
+}
+.logo{
+    margin-top: 20px;
+    margin-left: 60px;
+}
 h1, .btn {
     font-family: Truenosemibold;
 }
@@ -29,11 +36,12 @@ h2,h3 {
 }
 
 .btn {
-    background-color: white;
+    background-color: rgb(242, 157, 83);
+    color: white;
 }
 
 .btn:hover {
-    background-color: rgb(242, 157, 83);
+    background-color: rgba(242, 157, 83, 0.651);
     color: white;
     
 }
@@ -50,7 +58,7 @@ h2,h3 {
     margin-top: 100px;
 }
 
-img {
+img .pic2{
     margin-top: 60px;
 }
 
@@ -72,4 +80,19 @@ img {
     height: 70px;
     border-radius: 5px;
     border-style: none;
+}
+
+.pic1 {
+    width: 750px;
+    height: 750px;
+    margin-top: -110px;
+    margin-left: -110px;
+    position: absolute;
+    z-index: 1;
+}
+
+.pic2{
+    margin-left: -40px;
+    position: relative;
+    z-index: 2;
 }
