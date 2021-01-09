@@ -61,3 +61,17 @@ li.dropdown {
     color: #232323 !important;
     background: #f3f3f3 !important;
 }
+
+.detailInfo li{
+    text-decoration: none;
+    list-style: none;
+    align-content: center;
+    font-size: larger;
+}
+
+.btn-danger {
+    width: 100px;
+}
+.btn-success {
+    width: 100px;
+}
