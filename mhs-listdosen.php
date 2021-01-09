@@ -1,4 +1,6 @@
-<?php require_once("auth.php"); ?>
+<?php 
+    require_once("auth.php");
+?>
 
 <!doctype html>
 <html lang="en">
@@ -54,203 +56,27 @@
             <!-- <button type="button" class="btn btn-danger my-2">Keluar</button> -->
         </div>
     </nav>
-
-    <div class="list">
-        <table width="100%">
-            <tr>
-                <td>
-                    <img src="../STI-Apps/asset/Profile.png" alt="" width="40" height="40">&emsp;
-                </td>
-                <td> Nama Dosen Pembimbing &emsp;&emsp;&emsp;&emsp;&emsp;</td>
-                <td>Kuota Tersedia : 20 </td>
-                <td>Terisi Mahasiswa : 18 </td>
-                <td><button type="button" class="btn btn-primary btn-sm">Daftar Form</button></td>
-            </tr>
-        </table>
-    </div>
-    <div class="list">
-        <table width="100%">
-            <tr>
-                <td>
-                    <img src="../STI-Apps/asset/Profile.png" alt="" width="40" height="40">&emsp;
-                </td>
-                <td> Nama Dosen Pembimbing &emsp;&emsp;&emsp;&emsp;&emsp;</td>
-                <td>Kuota Tersedia : 20 </td>
-                <td>Terisi Mahasiswa : 18 </td>
-                <td><button type="button" class="btn btn-primary btn-sm">Daftar Form</button></td>
-            </tr>
-        </table>
-    </div>
-    <div class="list">
-        <table width="100%">
-            <tr>
-                <td>
-                    <img src="../STI-Apps/asset/Profile.png" alt="" width="40" height="40">&emsp;
-                </td>
-                <td> Nama Dosen Pembimbing &emsp;&emsp;&emsp;&emsp;&emsp;</td>
-                <td>Kuota Tersedia : 20 </td>
-                <td>Terisi Mahasiswa : 18 </td>
-                <td><button type="button" class="btn btn-primary btn-sm">Daftar Form</button></td>
-            </tr>
-        </table>
-    </div>
-    <div class="list">
-        <table width="100%">
-            <tr>
-                <td>
-                    <img src="../STI-Apps/asset/Profile.png" alt="" width="40" height="40">&emsp;
-                </td>
-                <td> Nama Dosen Pembimbing &emsp;&emsp;&emsp;&emsp;&emsp;</td>
-                <td>Kuota Tersedia : 20 </td>
-                <td>Terisi Mahasiswa : 18 </td>
-                <td><button type="button" class="btn btn-primary btn-sm">Daftar Form</button></td>
-            </tr>
-        </table>
-    </div>
-    <div class="list">
-        <table width="100%">
-            <tr>
-                <td>
-                    <img src="../STI-Apps/asset/Profile.png" alt="" width="40" height="40">&emsp;
-                </td>
-                <td> Nama Dosen Pembimbing &emsp;&emsp;&emsp;&emsp;&emsp;</td>
-                <td>Kuota Tersedia : 20 </td>
-                <td>Terisi Mahasiswa : 18 </td>
-                <td><button type="button" class="btn btn-primary btn-sm">Daftar Form</button></td>
-            </tr>
-        </table>
-    </div>
-    <div class="list">
-        <table width="100%">
-            <tr>
-                <td>
-                    <img src="../STI-Apps/asset/Profile.png" alt="" width="40" height="40">&emsp;
-                </td>
-                <td> Nama Dosen Pembimbing &emsp;&emsp;&emsp;&emsp;&emsp;</td>
-                <td>Kuota Tersedia : 20 </td>
-                <td>Terisi Mahasiswa : 18 </td>
-                <td><button type="button" class="btn btn-primary btn-sm">Daftar Form</button></td>
-            </tr>
-        </table>
-    </div>
-    <div class="list">
-        <table width="100%">
-            <tr>
-                <td>
-                    <img src="../STI-Apps/asset/Profile.png" alt="" width="40" height="40">&emsp;
-                </td>
-                <td> Nama Dosen Pembimbing &emsp;&emsp;&emsp;&emsp;&emsp;</td>
-                <td>Kuota Tersedia : 20 </td>
-                <td>Terisi Mahasiswa : 18 </td>
-                <td><button type="button" class="btn btn-primary btn-sm">Daftar Form</button></td>
-            </tr>
-        </table>
-    </div>
-    <div class="list">
-        <table width="100%">
-            <tr>
-                <td>
-                    <img src="../STI-Apps/asset/Profile.png" alt="" width="40" height="40">&emsp;
-                </td>
-                <td> Nama Dosen Pembimbing &emsp;&emsp;&emsp;&emsp;&emsp;</td>
-                <td>Kuota Tersedia : 20 </td>
-                <td>Terisi Mahasiswa : 18 </td>
-                <td><button type="button" class="btn btn-primary btn-sm">Daftar Form</button></td>
-            </tr>
-        </table>
-    </div>
-    <div class="list">
-        <table width="100%">
-            <tr>
-                <td>
-                    <img src="../STI-Apps/asset/Profile.png" alt="" width="40" height="40">&emsp;
-                </td>
-                <td> Nama Dosen Pembimbing &emsp;&emsp;&emsp;&emsp;&emsp;</td>
-                <td>Kuota Tersedia : 20 </td>
-                <td>Terisi Mahasiswa : 18 </td>
-                <td><button type="button" class="btn btn-primary btn-sm">Daftar Form</button></td>
-            </tr>
-        </table>
-    </div>
-    <div class="list">
-        <table width="100%">
-            <tr>
-                <td>
-                    <img src="../STI-Apps/asset/Profile.png" alt="" width="40" height="40">&emsp;
-                </td>
-                <td> Nama Dosen Pembimbing &emsp;&emsp;&emsp;&emsp;&emsp;</td>
-                <td>Kuota Tersedia : 20 </td>
-                <td>Terisi Mahasiswa : 18 </td>
-                <td><button type="button" class="btn btn-primary btn-sm">Daftar Form</button></td>
-            </tr>
-        </table>
-    </div>
-    <div class="list">
-        <table width="100%">
-            <tr>
-                <td>
-                    <img src="../STI-Apps/asset/Profile.png" alt="" width="40" height="40">&emsp;
-                </td>
-                <td> Nama Dosen Pembimbing &emsp;&emsp;&emsp;&emsp;&emsp;</td>
-                <td>Kuota Tersedia : 20 </td>
-                <td>Terisi Mahasiswa : 18 </td>
-                <td><button type="button" class="btn btn-primary btn-sm">Daftar Form</button></td>
-            </tr>
-        </table>
-    </div>
-    <div class="list">
-        <table width="100%">
-            <tr>
-                <td>
-                    <img src="../STI-Apps/asset/Profile.png" alt="" width="40" height="40">&emsp;
-                </td>
-                <td> Nama Dosen Pembimbing &emsp;&emsp;&emsp;&emsp;&emsp;</td>
-                <td>Kuota Tersedia : 20 </td>
-                <td>Terisi Mahasiswa : 18 </td>
-                <td><button type="button" class="btn btn-primary btn-sm">Daftar Form</button></td>
-            </tr>
-        </table>
-    </div>
-    <div class="list">
-        <table width="100%">
-            <tr>
-                <td>
-                    <img src="../STI-Apps/asset/Profile.png" alt="" width="40" height="40">&emsp;
-                </td>
-                <td> Nama Dosen Pembimbing &emsp;&emsp;&emsp;&emsp;&emsp;</td>
-                <td>Kuota Tersedia : 20 </td>
-                <td>Terisi Mahasiswa : 18 </td>
-                <td><button type="button" class="btn btn-primary btn-sm">Daftar Form</button></td>
-            </tr>
-        </table>
-    </div>
-    <div class="list">
-        <table width="100%">
-            <tr>
-                <td>
-                    <img src="../STI-Apps/asset/Profile.png" alt="" width="40" height="40">&emsp;
-                </td>
-                <td> Nama Dosen Pembimbing &emsp;&emsp;&emsp;&emsp;&emsp;</td>
-                <td>Kuota Tersedia : 20 </td>
-                <td>Terisi Mahasiswa : 18 </td>
-                <td><button type="button" class="btn btn-primary btn-sm">Daftar Form</button></td>
-            </tr>
-        </table>
-    </div>
-    <div class="list">
-        <table width="100%">
-            <tr>
-                <td>
-                    <img src="../STI-Apps/asset/Profile.png" alt="" width="40" height="40">&emsp;
-                </td>
-                <td> Nama Dosen Pembimbing &emsp;&emsp;&emsp;&emsp;&emsp;</td>
-                <td>Kuota Tersedia : 20 </td>
-                <td>Terisi Mahasiswa : 18 </td>
-                <td><button type="button" class="btn btn-primary btn-sm">Daftar Form</button></td>
-            </tr>
-        </table>
-    </div>
-
+    <?php
+        include 'config.php';
+        $sql = "SELECT id_dospem, fullname, kuota, pendaftar FROM dospem WHERE kuota !=0";
+        $stmt = $db->prepare($sql);
+        $stmt->execute();
+        while($listdospem = $stmt->fetch(PDO::FETCH_ASSOC)){
+        echo    '<div class="list">
+                    <table width="100%">
+                        <tr>
+                            <td>
+                                <img src="../STI-Apps/asset/Profile.png" alt="" width="40" height="40">&emsp;
+                            </td>
+                            <td> '.$listdospem["fullname"].' &emsp;&emsp;&emsp;&emsp;&emsp;</td>
+                            <td>Kuota Tersedia : '.$listdospem["kuota"].' </td>
+                            <td>Terisi Mahasiswa : '.$listdospem["pendaftar"].' </td>
+                            <td><a href="mhs-form.php" class="btn btn-primary btn-sm">Daftar Form</a></td>
+                        </tr>
+                    </table>
+                </div>';
+        }
+    ?>
 
     <!-- Optional JavaScript; choose one of the two! -->
 

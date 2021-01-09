@@ -1,3 +1,6 @@
+<?php
+require_once('auth.php');
+?>
 <!doctype html>
 <html lang="en">
 
@@ -17,7 +20,7 @@
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
-        <a class="navbar-brand" href="#">
+        <a class="navbar-brand" href="mhs-listdosen.php">
             <img src="../STI-Apps/asset/icon/mhs.png" width="35" height="35" class="d-inline-block align-top" alt="" loading="lazy">
             &nbsp; Dashboard Mahasiswa
         </a>
@@ -37,15 +40,15 @@
                     <!-- <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a> -->
                 </li>
             </ul>
-            <h6 class="mr-3">Nama Mahasiswa</h6>
+            <h6 class="mr-3"><?php echo $_SESSION["user"]["fullname"] ?></h6>
             <li class="dropdown">
                 <a href="#">
                     <img src="asset/Profile.png" alt="" width="40" height="40">
                 </a>
                 <ul class="isi-dropdown">
                     <li>
-                        <a href="#">
-                        <img src="asset/icon/ic_log.png" alt="" width="75" height="30"></a>
+                        <a href="logout.php">
+                            <img src="asset/icon/ic_log.png" alt="" width="75" height="30"></a>
                     </li>
                 </ul>
             </li>
@@ -56,27 +59,27 @@
         <div class="row right justify-content-center">
             <div class="col-md-6">
                 <h1 class="judul1">Formulir <br> Seminar Teknologi dan Informasi</h1>
-                <form>
+                <form action="" method="POST">
                     <div class="form-group col-md-12">
-                        <label for="exampleInputUsername">Nama Lengkap</label>
-                        <input type="user" class="form-control" id="exampleInputUsername" required>
+                        <label for="fullname">Nama Lengkap</label>
+                        <input type="text" class="form-control" name="fullname" id="fullname" value="<?php echo $_SESSION["user"]["fullname"] ?>" disabled>
                     </div>
                     <div class="form-group col-md-12">
-                        <label for="exampleInputPassword1">Judul Proposal</label>
-                        <input type="password" class="form-control" id="exampleInputPassword1" required>
+                        <label for="judul">Judul Proposal</label>
+                        <input type="text" class="form-control" id="judul" name="judul" required autofocus>
                     </div>
                     <div class="form-group col-md-12">
-                        <label for="validationDefault04">Kategori</label>
-                        <select class="custom-select" id="validationDefault04" required>
+                        <label for="kategori">Kategori</label>
+                        <select class="custom-select" id="kategori" name="kategori" required>
                             <option selected disabled value="">Pilih ...</option>
-                            <option>Artificial Intelegence</option>
-                            <option>Bisnis</option>
-                            <option>Cyber Security</option>
-                            <option>Data Scientis</option>
-                            <option>Software Enginer</option>
+                            <option value="ai">Artificial Intelligence</option>
+                            <option value="business">Business</option>
+                            <option value="cybersec">Cyber Security</option>
+                            <option value="datasc">Data Scientist</option>
+                            <option value="softeng">Software Engineer</option>
                         </select>
                     </div>
-                    <button type="submit" class="btn btn-primary">Submit</button>
+                    <input type="submit" class="btn btn-primary" name="submit" value="Submit">
                 </form>
 
                 <h4 class="judul3">Copyright &copy; 2020 || Developed By Team 7</h4>
@@ -97,3 +100,35 @@
 </body>
 
 </html>
+
+<?php
+// masih bingung dapetin data id_dospem nya
+// require_once("config.php");
+
+// if (isset($_POST['submit'])) {
+//     $fullname = filter_input(INPUT_POST, 'fullname', FILTER_SANITIZE_STRING);
+//     $judul = filter_input(INPUT_POST, 'judul', FILTER_SANITIZE_STRING);
+//     $kategori = filter_input(INPUT_POST, 'kategori', FILTER_SANITIZE_STRING);
+    
+//     $sql = "INSERT INTO judul (id_mhs, id_dospem, owner, judulprop, kategori) VALUES (:id_mhs, :id_dospem, :owner, :judulprop, :kategori)";
+//     $stmt = $db->prepare($sql);
+//     $params = array(
+//         ":id_mhs" => $_SESSION["user"]["id_mhs"],
+//         ":id_dospem" => $listdospem["id_dospem"],
+//         ":owner" => $fullname,
+//         ":judulprop" => $judul,
+//         ":kategori" => $kategori,
+//     );
+//     $stmt->execute($params);
+
+//     $sql = "UPDATE dospem SET kuota=:kuota, pendaftar=:pendaftar WHERE id_dospem=:id_dospem";
+//     $stmt = $db->prepare($sql);
+//     $params = array(
+//         ":kuota" => ($listdospem["kuota"] - 1),
+//         ":pendaftar" => ($listdospem["pendaftar"] + 1),
+//         ":id_dospem" => $listdospem["id_dospem"],
+//     );
+//     $stmt->execute($params);
+// }
+
+?>
