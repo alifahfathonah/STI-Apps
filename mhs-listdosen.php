@@ -1,5 +1,5 @@
-<?php 
-    require_once("auth.php");
+<?php
+require_once("auth.php");
 ?>
 
 <!doctype html>
@@ -41,7 +41,7 @@
                     <!-- <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a> -->
                 </li>
             </ul>
-            <h6 class="mr-3"><?php echo $_SESSION["user"]["fullname"] ?></h6>
+            <h6 class="mr-3"><?php echo $_SESSION["user"]["namaMhs"] ?></h6>
             <li class="dropdown">
                 <a href="#">
                     <img src="asset/Profile.png" alt="" width="40" height="40">
@@ -49,7 +49,7 @@
                 <ul class="isi-dropdown">
                     <li>
                         <a href="logout.php">
-                        <img src="asset/icon/ic_log.png" alt="" width="66" height="30"></a>
+                            <img src="asset/icon/ic_log.png" alt="" width="66" height="30"></a>
                     </li>
                 </ul>
             </li>
@@ -57,25 +57,31 @@
         </div>
     </nav>
     <?php
-        include 'config.php';
-        $sql = "SELECT id_dospem, fullname, kuota, pendaftar FROM dospem WHERE kuota !=0";
+    include 'config.php';
+    if ($_SESSION["user"]["hasDaftar"] == '1') {
+        echo '<div class="alert alert-warning" role="alert" align="center">
+            Maaf Anda tidak dapat mengisi Form. Form hanya berlaku untuk sekali pendaftaran !!
+            </div>';
+    } else {
+        $sql = "SELECT id_dospem, namaDospem, kuota, pendaftar FROM dospem WHERE kuota !=0";
         $stmt = $db->prepare($sql);
         $stmt->execute();
-        while($listdospem = $stmt->fetch(PDO::FETCH_ASSOC)){
-        echo    '<div class="list">
+        while ($listdospem = $stmt->fetch(PDO::FETCH_ASSOC)) {
+            echo    '<div class="list">
                     <table width="100%">
                         <tr>
                             <td>
                                 <img src="../STI-Apps/asset/Profile.png" alt="" width="40" height="40">&emsp;
                             </td>
-                            <td> '.$listdospem["fullname"].' &emsp;&emsp;&emsp;&emsp;&emsp;</td>
-                            <td>Kuota Tersedia : '.$listdospem["kuota"].' </td>
-                            <td>Terisi Mahasiswa : '.$listdospem["pendaftar"].' </td>
-                            <td><a href="mhs-form.php" class="btn btn-primary btn-sm">Daftar Form</a></td>
+                            <td> ' . $listdospem["namaDospem"] . ' &emsp;&emsp;&emsp;&emsp;&emsp;</td>
+                            <td>Kuota Tersedia : ' . $listdospem["kuota"] . ' </td>
+                            <td>Terisi Mahasiswa : ' . $listdospem["pendaftar"] . ' </td>
+                            <td><a href="mhs-form.php?namaDospem=' . $listdospem["namaDospem"] . '&id_dospem=' . $listdospem["id_dospem"] . '&kuota=' . $listdospem["kuota"] . '&pendaftar=' . $listdospem["pendaftar"] . '" class="btn btn-primary btn-sm">Daftar Form</a></td>
                         </tr>
                     </table>
                 </div>';
         }
+    }
     ?>
 
     <!-- Optional JavaScript; choose one of the two! -->

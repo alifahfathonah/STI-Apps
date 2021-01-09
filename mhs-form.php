@@ -1,6 +1,34 @@
 <?php
-require_once('auth.php');
+require_once("auth.php");
+require_once("config.php");
+
+if (isset($_POST['submit'])) {
+    header("Location: logout.php");
+    $namaMhs = $_SESSION["user"]["namaMhs"];
+    $judul = filter_input(INPUT_POST, 'judul', FILTER_SANITIZE_STRING);
+    $kategori = filter_input(INPUT_POST, 'kategori', FILTER_SANITIZE_STRING);
+    $idMhs = $_SESSION["user"]["id_mhs"];
+    $idDospem = $_GET["id_dospem"];
+
+    $sql = "INSERT INTO judul (id_mhs, id_dospem, penulis, judulprop, kategori) VALUES ('$idMhs', '$idDospem', '$namaMhs', '$judul', '$kategori')";
+    $stmt = $db->prepare($sql);
+    $stmt->execute();
+
+    $sql = "UPDATE dospem SET kuota=:kuota, pendaftar=:pendaftar WHERE id_dospem=:id_dospem";
+    $stmt = $db->prepare($sql);
+    $params = array(
+        ":kuota" => ($_GET["kuota"] - 1),
+        ":pendaftar" => ($_GET["pendaftar"] + 1),
+        ":id_dospem" => $_GET["id_dospem"],
+    );
+    $stmt->execute($params);
+
+    $sql = "UPDATE mahasiswa SET hasDaftar=1 WHERE id_mhs=$idMhs";
+    $stmt = $db -> prepare($sql);
+    $stmt -> execute();
+}
 ?>
+
 <!doctype html>
 <html lang="en">
 
@@ -40,7 +68,7 @@ require_once('auth.php');
                     <!-- <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a> -->
                 </li>
             </ul>
-            <h6 class="mr-3"><?php echo $_SESSION["user"]["fullname"] ?></h6>
+            <h6 class="mr-3"><?php echo $_SESSION["user"]["namaMhs"] ?></h6>
             <li class="dropdown">
                 <a href="#">
                     <img src="asset/Profile.png" alt="" width="40" height="40">
@@ -61,8 +89,12 @@ require_once('auth.php');
                 <h1 class="judul1">Formulir <br> Seminar Teknologi dan Informasi</h1>
                 <form action="" method="POST">
                     <div class="form-group col-md-12">
-                        <label for="fullname">Nama Lengkap</label>
-                        <input type="text" class="form-control" name="fullname" id="fullname" value="<?php echo $_SESSION["user"]["fullname"] ?>" disabled>
+                        <label for="namaMhs">Nama Lengkap</label>
+                        <input type="text" class="form-control" name="namaMhs" id="namaMhs" value="<?php echo $_SESSION["user"]["namaMhs"] ?>" disabled>
+                    </div>
+                    <div class="form-group col-md-12">
+                        <label for="namaDospem">Pilihan Dosen</label>
+                        <input type="text" class="form-control" name="namaDospem" id="namaDospem" value="<?php echo $_GET["namaDospem"] ?>" disabled>
                     </div>
                     <div class="form-group col-md-12">
                         <label for="judul">Judul Proposal</label>
@@ -72,11 +104,11 @@ require_once('auth.php');
                         <label for="kategori">Kategori</label>
                         <select class="custom-select" id="kategori" name="kategori" required>
                             <option selected disabled value="">Pilih ...</option>
-                            <option value="ai">Artificial Intelligence</option>
-                            <option value="business">Business</option>
-                            <option value="cybersec">Cyber Security</option>
-                            <option value="datasc">Data Scientist</option>
-                            <option value="softeng">Software Engineer</option>
+                            <option value="AI">Artificial Intelligence</option>
+                            <option value="Business">Business</option>
+                            <option value="Cyber Security">Cyber Security</option>
+                            <option value="Data Scientist">Data Scientist</option>
+                            <option value="Software Engineer">Software Engineer</option>
                         </select>
                     </div>
                     <input type="submit" class="btn btn-primary" name="submit" value="Submit">
@@ -100,35 +132,3 @@ require_once('auth.php');
 </body>
 
 </html>
-
-<?php
-// masih bingung dapetin data id_dospem nya
-// require_once("config.php");
-
-// if (isset($_POST['submit'])) {
-//     $fullname = filter_input(INPUT_POST, 'fullname', FILTER_SANITIZE_STRING);
-//     $judul = filter_input(INPUT_POST, 'judul', FILTER_SANITIZE_STRING);
-//     $kategori = filter_input(INPUT_POST, 'kategori', FILTER_SANITIZE_STRING);
-    
-//     $sql = "INSERT INTO judul (id_mhs, id_dospem, owner, judulprop, kategori) VALUES (:id_mhs, :id_dospem, :owner, :judulprop, :kategori)";
-//     $stmt = $db->prepare($sql);
-//     $params = array(
-//         ":id_mhs" => $_SESSION["user"]["id_mhs"],
-//         ":id_dospem" => $listdospem["id_dospem"],
-//         ":owner" => $fullname,
-//         ":judulprop" => $judul,
-//         ":kategori" => $kategori,
-//     );
-//     $stmt->execute($params);
-
-//     $sql = "UPDATE dospem SET kuota=:kuota, pendaftar=:pendaftar WHERE id_dospem=:id_dospem";
-//     $stmt = $db->prepare($sql);
-//     $params = array(
-//         ":kuota" => ($listdospem["kuota"] - 1),
-//         ":pendaftar" => ($listdospem["pendaftar"] + 1),
-//         ":id_dospem" => $listdospem["id_dospem"],
-//     );
-//     $stmt->execute($params);
-// }
-
-?>
