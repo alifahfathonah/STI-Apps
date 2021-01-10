@@ -1,6 +1,7 @@
 <?php
 require_once("auth.php");
 require_once("config.php");
+if ($_SESSION["user"]["hasDaftar"] == 1) header('Location: mhs-listdosen.php');
 
 if (isset($_POST['submit'])) {
     header("Location: logout.php");
@@ -10,7 +11,7 @@ if (isset($_POST['submit'])) {
     $idMhs = $_SESSION["user"]["id_mhs"];
     $idDospem = $_GET["id_dospem"];
 
-    $sql = "INSERT INTO judul (id_mhs, id_dospem, penulis, judulprop, kategori) VALUES ('$idMhs', '$idDospem', '$namaMhs', '$judul', '$kategori')";
+    $sql = "INSERT INTO judul (id_mhs, id_dospem, penulis, judulprop, kategori, penerimaan, pengesahan) VALUES ('$idMhs', '$idDospem', '$namaMhs', '$judul', '$kategori', '-', '-')";
     $stmt = $db->prepare($sql);
     $stmt->execute();
 

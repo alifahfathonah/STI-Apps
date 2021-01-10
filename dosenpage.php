@@ -1,3 +1,22 @@
+<?php
+require_once("auth.php");
+require_once("config.php");
+
+if (isset($_POST['terima'])) {
+    header("Location: dosenpage.php");
+    $sql = "UPDATE judul SET penerimaan = '1'";
+    $stmt = $db->prepare($sql);
+    $stmt->execute();
+}
+
+if (isset($_POST['tolak'])) {
+    header("Location: dosenpage.php");
+    $sql = "UPDATE judul SET penerimaan = '0'";
+    $stmt = $db->prepare($sql);
+    $stmt->execute();
+}
+?>
+
 <!doctype html>
 <html lang="en">
 
@@ -37,298 +56,96 @@
                     <!-- <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a> -->
                 </li>
             </ul>
-            <h6 class="mr-3">Nama Dosen</h6>
+            <h6 class="mr-3"><?php echo $_SESSION["user"]["namaDospem"] ?></h6>
             <li class="dropdown">
                 <a href="#">
                     <img src="asset/Profile.png" alt="" width="40" height="40">
                 </a>
                 <ul class="isi-dropdown">
                     <li>
-                        <a href="#">
-                        <img src="asset/icon/ic_log.png" alt="" width="75" height="30"></a>
+                        <a href="logout.php">
+                            <img src="asset/icon/ic_log.png" alt="" width="75" height="30"></a>
                     </li>
                 </ul>
             </li>
         </div>
     </nav>
 
-    <div class="list">
-            <table width="100%">
-                <tr>
-                    <td>
-                        <img src="../STI-Apps/asset/mhs.jpg" alt="" width="40" height="40">&emsp;
-                    </td>
-                    <td> Nama Mahasiswa &emsp;&emsp;&emsp;&emsp;</td>
-                    <td>Judul Proposal Mahasiswa &emsp;&emsp;&emsp;</td>
-                    <td id="td-btn">
-                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-lg">
-                            Detail Informasi
-                        </button>
-                    </td>
-                </tr>
-            </table>
-        </div>
-        <div class="list">
-            <table width="100%">
-                <tr>
-                    <td>
-                        <img src="../STI-Apps/asset/mhs.jpg" alt="" width="40" height="40">&emsp;
-                    </td>
-                    <td> Nama Mahasiswa &emsp;&emsp;&emsp;&emsp;</td>
-                    <td>Judul Proposal Mahasiswa &emsp;&emsp;&emsp;</td>
-                   <td id="td-btn">
-                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-lg">
-                            Detail Informasi
-                        </button>
-                    </td>
-                </tr>
-            </table>
-        </div>
-        <div class="list">
-            <table width="100%">
-                <tr>
-                    <td>
-                        <img src="../STI-Apps/asset/mhs.jpg" alt="" width="40" height="40">&emsp;
-                    </td>
-                    <td> Nama Mahasiswa &emsp;&emsp;&emsp;&emsp;</td>
-                    <td>Judul Proposal Mahasiswa &emsp;&emsp;&emsp;</td>
-                   <td id="td-btn">
-                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-lg">
-                            Detail Informasi
-                        </button>
-                    </td>
-                </tr>
-            </table>
-        </div>
-        <div class="list">
-            <table width="100%">
-                <tr>
-                    <td>
-                        <img src="../STI-Apps/asset/mhs.jpg" alt="" width="40" height="40">&emsp;
-                    </td>
-                    <td> Nama Mahasiswa &emsp;&emsp;&emsp;&emsp;</td>
-                    <td>Judul Proposal Mahasiswa &emsp;&emsp;&emsp;</td>
-                   <td id="td-btn">
-                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-lg">
-                            Detail Informasi
-                        </button>
-                    </td>
-                </tr>
-            </table>
-        </div>
-        <div class="list">
-            <table width="100%">
-                <tr>
-                    <td>
-                        <img src="../STI-Apps/asset/mhs.jpg" alt="" width="40" height="40">&emsp;
-                    </td>
-                    <td> Nama Mahasiswa &emsp;&emsp;&emsp;&emsp;</td>
-                    <td>Judul Proposal Mahasiswa &emsp;&emsp;&emsp;</td>
-                   <td id="td-btn">
-                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-lg">
-                            Detail Informasi
-                        </button>
-                    </td>
-                </tr>
-            </table>
-        </div>
-        <div class="list">
-            <table width="100%">
-                <tr>
-                    <td>
-                        <img src="../STI-Apps/asset/mhs.jpg" alt="" width="40" height="40">&emsp;
-                    </td>
-                    <td> Nama Mahasiswa &emsp;&emsp;&emsp;&emsp;</td>
-                    <td>Judul Proposal Mahasiswa &emsp;&emsp;&emsp;</td>
-                   <td id="td-btn">
-                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-lg">
-                            Detail Informasi
-                        </button>
-                    </td>
-                </tr>
-            </table>
-        </div>
-        <div class="list">
-            <table width="100%">
-                <tr>
-                    <td>
-                        <img src="../STI-Apps/asset/mhs.jpg" alt="" width="40" height="40">&emsp;
-                    </td>
-                    <td> Nama Mahasiswa &emsp;&emsp;&emsp;&emsp;</td>
-                    <td>Judul Proposal Mahasiswa &emsp;&emsp;&emsp;</td>
-                   <td id="td-btn">
-                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-lg">
-                            Detail Informasi
-                        </button>
-                    </td>
-                </tr>
-            </table>
-        </div>
-        <div class="list">
-            <table width="100%">
-                <tr>
-                    <td>
-                        <img src="../STI-Apps/asset/mhs.jpg" alt="" width="40" height="40">&emsp;
-                    </td>
-                    <td> Nama Mahasiswa &emsp;&emsp;&emsp;&emsp;</td>
-                    <td>Judul Proposal Mahasiswa &emsp;&emsp;&emsp;</td>
-                   <td id="td-btn">
-                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-lg">
-                            Detail Informasi
-                        </button>
-                    </td>
-                </tr>
-            </table>
-        </div>
-        <div class="list">
-            <table width="100%">
-                <tr>
-                    <td>
-                        <img src="../STI-Apps/asset/mhs.jpg" alt="" width="40" height="40">&emsp;
-                    </td>
-                    <td> Nama Mahasiswa &emsp;&emsp;&emsp;&emsp;</td>
-                    <td>Judul Proposal Mahasiswa &emsp;&emsp;&emsp;</td>
-                   <td id="td-btn">
-                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-lg">
-                            Detail Informasi
-                        </button>
-                    </td>
-                </tr>
-            </table>
-        </div>
-        <div class="list">
-            <table width="100%">
-                <tr>
-                    <td>
-                        <img src="../STI-Apps/asset/mhs.jpg" alt="" width="40" height="40">&emsp;
-                    </td>
-                    <td> Nama Mahasiswa &emsp;&emsp;&emsp;&emsp;</td>
-                    <td>Judul Proposal Mahasiswa &emsp;&emsp;&emsp;</td>
-                   <td id="td-btn">
-                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-lg">
-                            Detail Informasi
-                        </button>
-                    </td>
-                </tr>
-            </table>
-        </div>
-        <div class="list">
-            <table width="100%">
-                <tr>
-                    <td>
-                        <img src="../STI-Apps/asset/mhs.jpg" alt="" width="40" height="40">&emsp;
-                    </td>
-                    <td> Nama Mahasiswa &emsp;&emsp;&emsp;&emsp;</td>
-                    <td>Judul Proposal Mahasiswa &emsp;&emsp;&emsp;</td>
-                   <td id="td-btn">
-                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-lg">
-                            Detail Informasi
-                        </button>
-                    </td>
-                </tr>
-            </table>
-        </div>
-        <div class="list">
-            <table width="100%">
-                <tr>
-                    <td>
-                        <img src="../STI-Apps/asset/mhs.jpg" alt="" width="40" height="40">&emsp;
-                    </td>
-                    <td> Nama Mahasiswa &emsp;&emsp;&emsp;&emsp;</td>
-                    <td>Judul Proposal Mahasiswa &emsp;&emsp;&emsp;</td>
-                    <td id="td-btn">
-                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-lg">
-                            Detail Informasi
-                        </button>
-                    </td>
-                </tr>
-            </table>
-        </div>
-        <div class="list">
-            <table width="100%">
-                <tr>
-                    <td>
-                        <img src="../STI-Apps/asset/mhs.jpg" alt="" width="40" height="40">&emsp;
-                    </td>
-                    <td> Nama Mahasiswa &emsp;&emsp;&emsp;&emsp;</td>
-                    <td>Judul Proposal Mahasiswa &emsp;&emsp;&emsp;</td>
-                   <td id="td-btn">
-                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-lg">
-                            Detail Informasi
-                        </button>
-                    </td>
-                </tr>
-            </table>
-        </div>
-        <div class="list">
-            <table width="100%">
-                <tr>
-                    <td>
-                        <img src="../STI-Apps/asset/mhs.jpg" alt="" width="40" height="40">&emsp;
-                    </td>
-                    <td> Nama Mahasiswa &emsp;&emsp;&emsp;&emsp;</td>
-                    <td>Judul Proposal Mahasiswa &emsp;&emsp;&emsp;</td>
-                   <td id="td-btn">
-                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-lg">
-                            Detail Informasi
-                        </button>
-                    </td>
-                </tr>
-            </table>
-        </div>
-        <div class="list">
-            <table width="100%">
-                <tr>
-                    <td>
-                        <img src="../STI-Apps/asset/mhs.jpg" alt="" width="40" height="40">&emsp;
-                    </td>
-                    <td> Nama Mahasiswa &emsp;&emsp;&emsp;&emsp;</td>
-                    <td>Judul Proposal Mahasiswa &emsp;&emsp;&emsp;</td>
-                   <td id="td-btn">
-                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-lg">
-                            Detail Informasi
-                        </button>
-                    
-                    </td>
-                </tr>
-            </table>
-        </div>
-        
-        <!-- Modal -->
-        <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
-            <div class="modal-dialog modal-lg" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Detail Informasi Mahasiswa</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-                </div>
-                    <div class="modal-body">
-                        <ul class="detailInfo text-center">
-                            <li>
-                                <img src="../STI-Apps/asset/Profile.png" alt="Foto Mahasiswa" width="200" height="200">
-                            </li>
-                            <li>
-                                Nama : Nama Mahasiswa FIK UPNVJ
-                            </li><br>
-                            <li>
-                                NIM : 123456697889
-                            </li> <br>
-                            <li>
-                                Judul Proposal : <br>
-                                Penerapan Artificial Intelegence Untuk Mengetahui Ketertarikan <br> Pelanggan Terhadap Produk Yang Diiklankan di Media Massa Elektronik
-                            </li>
-                        </ul>
-                    </div> <br><br><br>
-                <div class="modal-footer">
-                <button type="button" class="btn btn-danger btn-lg">TOLAK</button>
-                <button type="button" class="btn btn-success btn-lg">TERIMA</button>
-                </div>
-            </div>
-            </div>
-        </div>
+    <?php
+    //include 'config.php';
+    $idDospem = $_SESSION["user"]["id_dospem"];
+    $sql = "SELECT DISTINCT penulis, judulprop FROM judul, dospem WHERE judul.id_dospem = $idDospem AND penerimaan = '-'";
+    $stmt = $db->prepare($sql);
+    $stmt->execute();
+    if ($stmt->rowCount() == 0) {
+        echo '<div class="alert alert-warning" role="alert" align="center">
+            List Pendaftar Kosong!
+            </div>';
+    } else {
+        while ($listjudul = $stmt->fetch(PDO::FETCH_ASSOC)) {
+            echo    '<div class="list">
+                        <table width="100%">
+                        <tr>
+                            <td>
+                                <img src="../STI-Apps/asset/mhs.jpg" alt="" width="40" height="40">&emsp;
+                            </td>
+                            <td> ' . $listjudul["penulis"] . ' &emsp;&emsp;&emsp;&emsp;</td>
+                            <td> ' . $listjudul["judulprop"] . ' &emsp;&emsp;&emsp;</td>
+                            <td id="td-btn">
+                                <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-lg">
+                                    Detail Informasi
+                                </button>
+                            </td>
+                        </tr>
+                        </table>
+                    </div>';
+        }
+    }
+    ?>
 
+
+    <!-- Modal -->
+    <?php
+    //include 'config.php';
+    $sql = "SELECT penulis, noInduk, judulprop FROM mahasiswa, judul WHERE judul.id_mhs = mahasiswa.id_mhs";
+    $stmt = $db->prepare($sql);
+    $stmt->execute();
+    $detail = $stmt->fetch(PDO::FETCH_ASSOC);
+    echo    '<div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+                <div class="modal-dialog modal-lg" role="document">
+                    <div class="modal-content">
+                        <form action="" method="POST">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">Detail Informasi Mahasiswa</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                    </button>
+                            </div>
+                            <div class="modal-body">
+                                <ul class="detailInfo text-center">
+                                    <li>
+                                    <img src="../STI-Apps/asset/Profile.png" alt="Foto Mahasiswa" width="200" height="200">
+                                    </li>
+                                    <li>
+                                    Nama : ' . $detail["penulis"] . '
+                                    </li><br>
+                                    <li>
+                                    NIM : ' . $detail["noInduk"] . '
+                                    </li><br>
+                                    <li>
+                                    Judul Proposal : ' . $detail["judulprop"] . '
+                                    </li>
+                                </ul>
+                            </div> <br><br><br>
+                            <div class="modal-footer">
+                            <input type="submit" class="btn btn-danger btn-lg" name="tolak" value="TOLAK">
+                            <input type="submit" class="btn btn-success btn-lg" name="terima" value="TERIMA">
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>';
+    ?>
 
     <!-- Optional JavaScript; choose one of the two! -->
 
