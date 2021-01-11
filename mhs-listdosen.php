@@ -58,7 +58,7 @@ require_once("auth.php");
     </nav>
     <?php
     include 'config.php';
-    if ($_SESSION["user"]["hasDaftar"] == '1') {
+    if ($_SESSION["user"]["hasDaftar"] == 1) {
         echo '<div class="alert alert-warning" role="alert" align="center">
             Maaf Anda tidak dapat mengisi Form. Form hanya berlaku untuk sekali pendaftaran !!
             </div>';

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 10, 2021 at 03:46 PM
+-- Generation Time: Jan 11, 2021 at 03:31 PM
 -- Server version: 10.1.38-MariaDB
 -- PHP Version: 7.3.2
 
@@ -42,7 +42,7 @@ CREATE TABLE `dospem` (
 --
 
 INSERT INTO `dospem` (`id_dospem`, `noInduk`, `password`, `namaDospem`, `kuota`, `pendaftar`) VALUES
-(1, 'noorfalih', '$2y$10$obpgtyBGTmPsItIZyeA/nuhK.65AxovUVY39hB1fpUvR1aRr2vPra', 'Noor Falih', 18, 2),
+(1, 'noorfalih', '$2y$10$obpgtyBGTmPsItIZyeA/nuhK.65AxovUVY39hB1fpUvR1aRr2vPra', 'Noor Falih', 20, 0),
 (2, 'titinpramiyati', '$2y$10$k9eshInLF5FswMudscBF8OoZYjQL.yETLvok8AInkir1itqCX7JVW', 'Titin Pramiyati', 20, 0);
 
 -- --------------------------------------------------------
@@ -67,8 +67,36 @@ CREATE TABLE `judul` (
 --
 
 INSERT INTO `judul` (`id_judul`, `id_mhs`, `id_dospem`, `penulis`, `judulprop`, `kategori`, `penerimaan`, `pengesahan`) VALUES
-(5, 1, 1, 'Jamalul Ikhsan', 'Test', 'Data Scientist', '-', '-'),
-(6, 2, 1, 'Aldilla Gardika Pramesta', 'Mengidentifikasi Penyakit Padi', 'AI', '-', '-');
+(5, 1, 1, 'Jamalul Ikhsan', 'Test', 'Data Scientist', '0', '-'),
+(6, 2, 1, 'Aldilla Gardika Pramesta', 'Mengidentifikasi Penyakit Padi', 'AI', '1', '0'),
+(7, 2, 1, 'Aldilla Gardika Pramesta', 'Mengidentifikasi Penyakit Padi', 'AI', '1', '0'),
+(8, 1, 2, 'Jamalul Ikhsan', 'Test', 'Software Engineer', '1', '0'),
+(9, 2, 1, 'Aldilla Gardika Pramesta', 'Mengidentifikasi Penyakit Padi', 'AI', '0', '-'),
+(10, 2, 1, 'Aldilla Gardika Pramesta', 'Mengidentifikasi Penyakit Padi', 'AI', '0', '-'),
+(11, 2, 1, 'Aldilla Gardika Pramesta', 'Mengidentifikasi Penyakit Padi', 'AI', '0', '-'),
+(12, 2, 1, 'Aldilla Gardika Pramesta', 'Mengidentifikasi Penyakit Padi', 'AI', '0', '-'),
+(13, 2, 1, 'Aldilla Gardika Pramesta', 'Mengidentifikasi Penyakit Padi', 'AI', '0', '-'),
+(14, 2, 1, 'Aldilla Gardika Pramesta', 'Mengidentifikasi Penyakit Padi', 'AI', '0', '-');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `kaprodi`
+--
+
+CREATE TABLE `kaprodi` (
+  `id_kaprodi` int(11) NOT NULL,
+  `noInduk` int(11) NOT NULL,
+  `password` varchar(255) NOT NULL,
+  `namaKaprodi` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `kaprodi`
+--
+
+INSERT INTO `kaprodi` (`id_kaprodi`, `noInduk`, `password`, `namaKaprodi`) VALUES
+(1, 12345678, '$2y$10$xItfkhMDu..V6DjjIkDA3.1q099muAWne2h3uOMbei86yIJQqLitK', 'Anita');
 
 -- --------------------------------------------------------
 
@@ -89,8 +117,8 @@ CREATE TABLE `mahasiswa` (
 --
 
 INSERT INTO `mahasiswa` (`id_mhs`, `noInduk`, `password`, `namaMhs`, `hasDaftar`) VALUES
-(1, '1810511099', '$2y$10$.8MwREIZvItopo.0bb7e3ukZauP8XpRUXAzcnpOqagmY0UTbLyzQi', 'Jamalul Ikhsan', 1),
-(2, '1810511108', '$2y$10$QFRM4xYuYCdJXQ7VW0qxM.5I5JkhT55D/pigrmXH6.E7rxyF4Pbgi', 'Aldilla Gardika Pramesta', 1);
+(1, '1810511099', '$2y$10$.8MwREIZvItopo.0bb7e3ukZauP8XpRUXAzcnpOqagmY0UTbLyzQi', 'Jamalul Ikhsan', 0),
+(2, '1810511108', '$2y$10$QFRM4xYuYCdJXQ7VW0qxM.5I5JkhT55D/pigrmXH6.E7rxyF4Pbgi', 'Aldilla Gardika Pramesta', 0);
 
 --
 -- Indexes for dumped tables
@@ -110,6 +138,13 @@ ALTER TABLE `judul`
   ADD PRIMARY KEY (`id_judul`),
   ADD KEY `id_mhs_idx` (`id_mhs`),
   ADD KEY `id_dospem_idx` (`id_dospem`);
+
+--
+-- Indexes for table `kaprodi`
+--
+ALTER TABLE `kaprodi`
+  ADD PRIMARY KEY (`id_kaprodi`),
+  ADD UNIQUE KEY `noInduk` (`noInduk`);
 
 --
 -- Indexes for table `mahasiswa`
@@ -132,7 +167,13 @@ ALTER TABLE `dospem`
 -- AUTO_INCREMENT for table `judul`
 --
 ALTER TABLE `judul`
-  MODIFY `id_judul` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id_judul` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+
+--
+-- AUTO_INCREMENT for table `kaprodi`
+--
+ALTER TABLE `kaprodi`
+  MODIFY `id_kaprodi` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `mahasiswa`
