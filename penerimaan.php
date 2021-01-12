@@ -1,6 +1,37 @@
 <?php
 require_once("auth.php");
 require_once("config.php");
+$idJudul = $_GET["id_judul"];
+$idDospem = $_SESSION["user"]["id_dospem"];
+if(empty($idJudul)) header("Location: dosenpage.php");
+
+if (isset($_POST['terima'])) {
+    header("Location: dosenpage.php");
+    $sql = "UPDATE judul SET penerimaan = '1' WHERE id_judul = $idJudul";
+    $stmt = $db->prepare($sql);
+    $stmt->execute();
+}
+
+if (isset($_POST['tolak'])) {
+    header("Location: dosenpage.php");
+    $sql = "UPDATE judul SET penerimaan = '0' WHERE id_judul = $idJudul";
+    $stmt = $db->prepare($sql);
+    $stmt->execute();
+
+    $sql = "UPDATE dospem SET kuota=(kuota+1), pendaftar=(pendaftar-1) WHERE id_dospem = $idDospem";
+    $stmt = $db->prepare($sql);
+    $stmt->execute();
+
+    $sql = "SELECT id_mhs FROM judul WHERE id_judul = $idJudul";
+    $stmt = $db->prepare($sql);
+    $stmt->execute();
+    $detailMhs = $stmt->fetch(PDO::FETCH_ASSOC);
+
+    $idMhs = $detailMhs["id_mhs"];
+    $sql = "UPDATE mahasiswa SET hasDaftar=0 WHERE id_mhs = $idMhs";
+    $stmt = $db->prepare($sql);
+    $stmt->execute();
+}
 ?>
 
 <!doctype html>
@@ -22,7 +53,7 @@ require_once("config.php");
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
-        <a class="navbar-brand" href="#">
+        <a class="navbar-brand" href="dosenpage.php">
             <img src="../STI-Apps/asset/icon/dosen.png" width="35" height="35" class="d-inline-block align-top" alt="" loading="lazy">
             &nbsp; Dashboard Dosen
         </a>
@@ -37,7 +68,7 @@ require_once("config.php");
                 <li class="nav-item">
                     <span class="navbar-text">
                         &emsp;&emsp;&emsp;&emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp;
-                        List Pendaftar Proposal
+                        Detail Informasi Mahasiswa
                     </span>
                     <!-- <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a> -->
                 </li>
@@ -58,34 +89,42 @@ require_once("config.php");
     </nav>
 
     <?php
-    //include 'config.php';
-    $idDospem = $_SESSION["user"]["id_dospem"];
-    $sql = "SELECT DISTINCT id_judul, penulis, judulprop FROM judul, dospem WHERE judul.id_dospem = $idDospem AND penerimaan = '-'";
+    $sql = "SELECT noInduk FROM mahasiswa, judul WHERE id_judul = $idJudul AND mahasiswa.id_mhs = judul.id_mhs";
     $stmt = $db->prepare($sql);
     $stmt->execute();
-    if ($stmt->rowCount() == 0) {
-        echo '<div class="alert alert-warning" role="alert" align="center">
-            List Pendaftar Kosong!
-            </div>';
-    } else {
-        while ($listjudul = $stmt->fetch(PDO::FETCH_ASSOC)) {
-            echo    '<div class="list">
-                        <table width="100%">
-                        <tr>
-                            <td>
-                                <img src="../STI-Apps/asset/mhs.jpg" alt="" width="40" height="40">&emsp;
-                            </td>
-                            <td> ' . $listjudul["penulis"] . ' &emsp;&emsp;&emsp;&emsp;</td>
-                            <td> ' . $listjudul["judulprop"] . ' &emsp;&emsp;&emsp;</td>
-                            <td id="td-btn">
-                                <a href="penerimaan.php?id_judul='.$listjudul["id_judul"].'&penulis='.$listjudul["penulis"].'&judulprop='.$listjudul["judulprop"].'" class="btn btn-primary">Detail Informasi</a>
-                            </td>
-                        </tr>
-                        </table>
-                    </div>';
-        }
-    }
+    $detail = $stmt->fetch(PDO::FETCH_ASSOC);
     ?>
+
+    <div class="container">
+        <div class="row right justify-content-center">
+            <div class="col-md-6">
+                <form action="" method="POST">
+                    <div class="modal-body">
+                        <ul class="detailInfo text-center">
+                            <li>
+                                <img src="../STI-Apps/asset/Profile.png" alt="Foto Mahasiswa" width="200" height="200">
+                            </li>
+                            <li>
+                                Nama : <?php echo $_GET["penulis"] ?>
+                            </li><br>
+                            <li>
+                                NIM : <?php echo $detail["noInduk"] ?>
+                            </li><br>
+                            <li>
+                                Judul Proposal : <?php echo $_GET["judulprop"] ?>
+                            </li>
+                        </ul>
+                    </div> <br><br><br>
+                    <div class="modal-footer">
+                        <input type="submit" class="btn btn-danger btn-lg" name="tolak" value="TOLAK">
+                        <input type="submit" class="btn btn-success btn-lg" name="terima" value="TERIMA">
+                    </div>
+                </form>
+
+                <h4 class="judul3">Copyright &copy; 2020 || Developed By Team 7</h4>
+            </div>
+        </div>
+    </div>
 
     <!-- Optional JavaScript; choose one of the two! -->
 

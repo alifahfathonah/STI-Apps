@@ -28,8 +28,8 @@
                 <h1 class="judul1">Masuk Akun</h1>
                 <form action="" method="POST">
                     <div class="form-group col-md-8">
-                        <label for="username">Username</label>
-                        <input type="user" class="form-control" name="username" id="exampleInputUsername" required>
+                        <label for="noInduk">NIM / NIP</label>
+                        <input type="user" class="form-control" name="noInduk" id="exampleInputUsername" required>
                     </div>
                     <div class="form-group col-md-8">
                         <label for="password">Password</label>
@@ -78,16 +78,16 @@
 require_once("config.php");
 
 if (isset($_POST['login'])) {
-    $username = filter_input(INPUT_POST, 'username', FILTER_SANITIZE_STRING);
+    $noInduk = filter_input(INPUT_POST, 'noInduk', FILTER_SANITIZE_STRING);
     $password = filter_input(INPUT_POST, 'password', FILTER_SANITIZE_STRING);
     $identitas = filter_input(INPUT_POST, 'identitas', FILTER_SANITIZE_STRING);
 
 
     if ($identitas == "mahasiswa") {
-        $sql = "SELECT * FROM mahasiswa WHERE username=:username";
+        $sql = "SELECT * FROM mahasiswa WHERE noInduk=:noInduk";
         $stmt = $db->prepare($sql);
         $params = array(
-            ":username" => $username,
+            ":noInduk" => $noInduk,
         );
         $stmt->execute($params);
         $user = $stmt->fetch(PDO::FETCH_ASSOC);
@@ -96,10 +96,10 @@ if (isset($_POST['login'])) {
             $_SESSION["user"] = $user;
             header("Location: mhs-listdosen.php");   
             $password_hash = password_hash($user["password"], PASSWORD_DEFAULT);
-            $sql = "UPDATE mahasiswa SET password =:password WHERE username=:username";
+            $sql = "UPDATE mahasiswa SET password =:password WHERE noInduk=:noInduk";
             $stmt = $db->prepare($sql);
             $params = array(
-                ":username" => $username,
+                ":noInduk" => $noInduk,
                 ":password" => $password_hash,
             );
             $stmt->execute($params);        
@@ -111,10 +111,10 @@ if (isset($_POST['login'])) {
     }
 
     if ($identitas == "dospem") {
-        $sql = "SELECT * FROM dospem WHERE username=:username";
+        $sql = "SELECT * FROM dospem WHERE noInduk=:noInduk";
         $stmt = $db->prepare($sql);
         $params = array(
-            ":username" => $username,
+            ":noInduk" => $noInduk,
         );
         $stmt->execute($params);
         $user = $stmt->fetch(PDO::FETCH_ASSOC);
@@ -123,10 +123,10 @@ if (isset($_POST['login'])) {
             $_SESSION["user"] = $user;
             header("Location: dosenpage.php");   
             $password_hash = password_hash($user["password"], PASSWORD_DEFAULT);
-            $sql = "UPDATE dospem SET password =:password WHERE username=:username";
+            $sql = "UPDATE dospem SET password =:password WHERE noInduk=:noInduk";
             $stmt = $db->prepare($sql);
             $params = array(
-                ":username" => $username,
+                ":noInduk" => $noInduk,
                 ":password" => $password_hash,
             );
             $stmt->execute($params);        
@@ -138,10 +138,10 @@ if (isset($_POST['login'])) {
     }
 
     if ($identitas == "kaprodi") {
-        $sql = "SELECT * FROM kaprodi WHERE username=:username";
+        $sql = "SELECT * FROM kaprodi WHERE noInduk=:noInduk";
         $stmt = $db->prepare($sql);
         $params = array(
-            ":username" => $username,
+            ":noInduk" => $noInduk,
         );
         $stmt->execute($params);
         $user = $stmt->fetch(PDO::FETCH_ASSOC);
@@ -150,10 +150,10 @@ if (isset($_POST['login'])) {
             $_SESSION["user"] = $user;
             header("Location: kaprodipage.php");   
             $password_hash = password_hash($user["password"], PASSWORD_DEFAULT);
-            $sql = "UPDATE kaprodi SET password =:password WHERE username=:username";
+            $sql = "UPDATE kaprodi SET password =:password WHERE noInduk=:noInduk";
             $stmt = $db->prepare($sql);
             $params = array(
-                ":username" => $username,
+                ":noInduk" => $noInduk,
                 ":password" => $password_hash,
             );
             $stmt->execute($params);        
