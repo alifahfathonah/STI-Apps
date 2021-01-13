@@ -3,31 +3,31 @@ require_once("auth.php");
 require_once("config.php");
 if ($_SESSION["user"]["hasDaftar"] == 1) header('Location: mhs-listdosen.php');
 
-if (isset($_POST['submit'])) {
-    header("Location: logout.php");
-    $namaMhs = $_SESSION["user"]["namaMhs"];
-    $judul = filter_input(INPUT_POST, 'judul', FILTER_SANITIZE_STRING);
-    $kategori = filter_input(INPUT_POST, 'kategori', FILTER_SANITIZE_STRING);
-    $idMhs = $_SESSION["user"]["id_mhs"];
-    $idDospem = $_GET["id_dospem"];
+// if (isset($_POST['submit'])) {
+//     //header("Location: logout.php");
+//     $namaMhs = $_SESSION["user"]["namaMhs"];
+//     $judul = filter_input(INPUT_POST, 'judul', FILTER_SANITIZE_STRING);
+//     $kategori = filter_input(INPUT_POST, 'kategori', FILTER_SANITIZE_STRING);
+//     $idMhs = $_SESSION["user"]["id_mhs"];
+//     $idDospem = $_GET["id_dospem"];
 
-    $sql = "INSERT INTO judul (id_mhs, id_dospem, penulis, judulprop, kategori, penerimaan, pengesahan) VALUES ('$idMhs', '$idDospem', '$namaMhs', '$judul', '$kategori', '-', '-')";
-    $stmt = $db->prepare($sql);
-    $stmt->execute();
+//     $sql = "INSERT INTO judul (id_mhs, id_dospem, penulis, judulprop, kategori, penerimaan, pengesahan) VALUES ('$idMhs', '$idDospem', '$namaMhs', '$judul', '$kategori', '-', '-')";
+//     $stmt = $db->prepare($sql);
+//     $stmt->execute();
 
-    $sql = "UPDATE dospem SET kuota=:kuota, pendaftar=:pendaftar WHERE id_dospem=:id_dospem";
-    $stmt = $db->prepare($sql);
-    $params = array(
-        ":kuota" => ($_GET["kuota"] - 1),
-        ":pendaftar" => ($_GET["pendaftar"] + 1),
-        ":id_dospem" => $_GET["id_dospem"],
-    );
-    $stmt->execute($params);
+//     $sql = "UPDATE dospem SET kuota=:kuota, pendaftar=:pendaftar WHERE id_dospem=:id_dospem";
+//     $stmt = $db->prepare($sql);
+//     $params = array(
+//         ":kuota" => ($_GET["kuota"] - 1),
+//         ":pendaftar" => ($_GET["pendaftar"] + 1),
+//         ":id_dospem" => $_GET["id_dospem"],
+//     );
+//     $stmt->execute($params);
 
-    $sql = "UPDATE mahasiswa SET hasDaftar=1 WHERE id_mhs=$idMhs";
-    $stmt = $db->prepare($sql);
-    $stmt->execute();
-}
+//     $sql = "UPDATE mahasiswa SET hasDaftar=1 WHERE id_mhs=$idMhs";
+//     $stmt = $db->prepare($sql);
+//     $stmt->execute();
+// }
 ?>
 
 <!doctype html>
@@ -112,7 +112,7 @@ if (isset($_POST['submit'])) {
                             <option value="Software Engineer">Software Engineer</option>
                         </select>
                     </div>
-                    <input type="submit" class="btn btn-primary" name="submit" value="Submit">
+                    <input type="submit" class="btn btn-primary formIn" name="submit" value="Submit">
                 </form>
 
                 <h4 class="judul3">Copyright &copy; 2020 || Developed By Team 7</h4>
@@ -124,6 +124,75 @@ if (isset($_POST['submit'])) {
             <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
             <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
             <script src="js/sweetalert2.all.min.js"></script>
+            <script>
+                $('.formIn').on('click', function(e){
+                    
+                    e.preventDefault();
+                    
+                    Swal.fire({
+                        title: 'Submit Data Berhasil!',
+                        text: "Mohon menunggu informasi berikutnya !!",
+                        icon: 'success',
+                        showCancelButton: false,
+                        confirmButtonColor: '#3085d6',
+                        cancelButtonColor: '#d33',
+                        confirmButtonText: 'Oke'
+                        }).then((result) => {
+                        if (result.isConfirmed) {
+                            // Swal.fire(
+                            // 'Submit Data Berhasil!',
+                            // 'Mohon menunggu informasi berikutnya !',
+                            // 'success'
+                            // )
+
+                            <?php 
+                                if (isset($_POST['submit'])) {
+                                    //header("Location: logout.php");
+                                    $namaMhs = $_SESSION["user"]["namaMhs"];
+                                    $judul = filter_input(INPUT_POST, 'judul', FILTER_SANITIZE_STRING);
+                                    $kategori = filter_input(INPUT_POST, 'kategori', FILTER_SANITIZE_STRING);
+                                    $idMhs = $_SESSION["user"]["id_mhs"];
+                                    $idDospem = $_GET["id_dospem"];
+    
+                                    $sql = "INSERT INTO judul (id_mhs, id_dospem, penulis, judulprop, kategori, penerimaan, pengesahan) VALUES ('$idMhs', '$idDospem', '$namaMhs', '$judul', '$kategori', '-', '-')";
+                                    $stmt = $db->prepare($sql);
+                                    $stmt->execute();
+    
+                                    $sql = "UPDATE dospem SET kuota=:kuota, pendaftar=:pendaftar WHERE id_dospem=:id_dospem";
+                                    $stmt = $db->prepare($sql);
+                                    $params = array(
+                                        ":kuota" => ($_GET["kuota"] - 1),
+                                        ":pendaftar" => ($_GET["pendaftar"] + 1),
+                                        ":id_dospem" => $_GET["id_dospem"],
+                                    );
+                                    $stmt->execute($params);
+    
+                                    $sql = "UPDATE mahasiswa SET hasDaftar=1 WHERE id_mhs=$idMhs";
+                                    $stmt = $db->prepare($sql);
+                                    $stmt->execute();
+                                }
+                            ?>
+
+                            document.location.href="logout.php";
+                        }
+                    })
+                });
+
+
+                // const tombol = document.querySelector('#formIn');
+                // tombol.addEventListener('click', function(){
+                //     Swal({
+                //         title : 'Submit Data Berhasil !',
+                //         text : 'Mohon menunggu informasi berikutnya',
+                //         type: 'success',
+                //         confirmButtonText:'Ok'
+                //     }).then((result)=> {
+                //         if(result.isConfirmed) {
+                //             tombol.setAttribute("name", "submit");
+                //         }
+                //     });
+                // });
+            </script>
             <!-- Option 2: jQuery, Popper.js, and Bootstrap JS
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
