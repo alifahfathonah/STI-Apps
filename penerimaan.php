@@ -28,7 +28,7 @@ if (isset($_POST['tolak'])) {
     $detailMhs = $stmt->fetch(PDO::FETCH_ASSOC);
 
     $idMhs = $detailMhs["id_mhs"];
-    $sql = "UPDATE mahasiswa SET hasDaftar=0 WHERE id_mhs = $idMhs";
+    $sql = "UPDATE mahasiswa SET hasDaftar=0, isTolak='1' WHERE id_mhs = $idMhs";
     $stmt = $db->prepare($sql);
     $stmt->execute();
 }

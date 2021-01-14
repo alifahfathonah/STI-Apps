@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 11, 2021 at 03:31 PM
+-- Generation Time: Jan 13, 2021 at 01:09 PM
 -- Server version: 10.1.38-MariaDB
 -- PHP Version: 7.3.2
 
@@ -62,22 +62,6 @@ CREATE TABLE `judul` (
   `pengesahan` varchar(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
---
--- Dumping data for table `judul`
---
-
-INSERT INTO `judul` (`id_judul`, `id_mhs`, `id_dospem`, `penulis`, `judulprop`, `kategori`, `penerimaan`, `pengesahan`) VALUES
-(5, 1, 1, 'Jamalul Ikhsan', 'Test', 'Data Scientist', '0', '-'),
-(6, 2, 1, 'Aldilla Gardika Pramesta', 'Mengidentifikasi Penyakit Padi', 'AI', '1', '0'),
-(7, 2, 1, 'Aldilla Gardika Pramesta', 'Mengidentifikasi Penyakit Padi', 'AI', '1', '0'),
-(8, 1, 2, 'Jamalul Ikhsan', 'Test', 'Software Engineer', '1', '0'),
-(9, 2, 1, 'Aldilla Gardika Pramesta', 'Mengidentifikasi Penyakit Padi', 'AI', '0', '-'),
-(10, 2, 1, 'Aldilla Gardika Pramesta', 'Mengidentifikasi Penyakit Padi', 'AI', '0', '-'),
-(11, 2, 1, 'Aldilla Gardika Pramesta', 'Mengidentifikasi Penyakit Padi', 'AI', '0', '-'),
-(12, 2, 1, 'Aldilla Gardika Pramesta', 'Mengidentifikasi Penyakit Padi', 'AI', '0', '-'),
-(13, 2, 1, 'Aldilla Gardika Pramesta', 'Mengidentifikasi Penyakit Padi', 'AI', '0', '-'),
-(14, 2, 1, 'Aldilla Gardika Pramesta', 'Mengidentifikasi Penyakit Padi', 'AI', '0', '-');
-
 -- --------------------------------------------------------
 
 --
@@ -109,16 +93,17 @@ CREATE TABLE `mahasiswa` (
   `noInduk` varchar(255) NOT NULL,
   `password` varchar(255) NOT NULL,
   `namaMhs` varchar(255) NOT NULL,
-  `hasDaftar` tinyint(1) NOT NULL
+  `hasDaftar` tinyint(1) NOT NULL,
+  `isTolak` varchar(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `mahasiswa`
 --
 
-INSERT INTO `mahasiswa` (`id_mhs`, `noInduk`, `password`, `namaMhs`, `hasDaftar`) VALUES
-(1, '1810511099', '$2y$10$.8MwREIZvItopo.0bb7e3ukZauP8XpRUXAzcnpOqagmY0UTbLyzQi', 'Jamalul Ikhsan', 0),
-(2, '1810511108', '$2y$10$QFRM4xYuYCdJXQ7VW0qxM.5I5JkhT55D/pigrmXH6.E7rxyF4Pbgi', 'Aldilla Gardika Pramesta', 0);
+INSERT INTO `mahasiswa` (`id_mhs`, `noInduk`, `password`, `namaMhs`, `hasDaftar`, `isTolak`) VALUES
+(1, '1810511099', '$2y$10$.8MwREIZvItopo.0bb7e3ukZauP8XpRUXAzcnpOqagmY0UTbLyzQi', 'Jamalul Ikhsan', 0, '0'),
+(2, '1810511108', '$2y$10$QFRM4xYuYCdJXQ7VW0qxM.5I5JkhT55D/pigrmXH6.E7rxyF4Pbgi', 'Aldilla Gardika Pramesta', 0, '0');
 
 --
 -- Indexes for dumped tables
@@ -167,7 +152,7 @@ ALTER TABLE `dospem`
 -- AUTO_INCREMENT for table `judul`
 --
 ALTER TABLE `judul`
-  MODIFY `id_judul` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id_judul` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=50;
 
 --
 -- AUTO_INCREMENT for table `kaprodi`

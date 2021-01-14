@@ -60,8 +60,30 @@ require_once("auth.php");
     include 'config.php';
     if ($_SESSION["user"]["hasDaftar"] == 1) {
         echo '<div class="alert alert-warning" role="alert" align="center">
-            Maaf Anda tidak dapat mengisi Form. Form hanya berlaku untuk sekali pendaftaran !!
+            Maaf Anda tidak dapat mengisi Form. Form hanya berlaku untuk sekali pendaftaran !! Lihat pengumuman <a href="pengumuman.php">disini</a>
             </div>';
+    } elseif ($_SESSION["user"]["isTolak"] == '1') {
+        echo '<div class="alert alert-warning" role="alert" align="center">
+            Lihat pengumuman <a href="pengumuman.php">disini</a>
+            </div>';
+        $sql = "SELECT id_dospem, namaDospem, kuota, pendaftar FROM dospem WHERE kuota !=0";
+        $stmt = $db->prepare($sql);
+        $stmt->execute();
+        while ($listdospem = $stmt->fetch(PDO::FETCH_ASSOC)) {
+            echo    '<div class="list">
+                        <table width="100%">
+                            <tr>
+                                <td>
+                                    <img src="../STI-Apps/asset/Profile.png" alt="" width="40" height="40">&emsp;
+                                </td>
+                                <td> ' . $listdospem["namaDospem"] . ' &emsp;&emsp;&emsp;&emsp;&emsp;</td>
+                                <td>Kuota Tersedia : ' . $listdospem["kuota"] . ' </td>
+                                <td>Terisi Mahasiswa : ' . $listdospem["pendaftar"] . ' </td>
+                                <td><a href="mhs-form.php?namaDospem=' . $listdospem["namaDospem"] . '&id_dospem=' . $listdospem["id_dospem"] . '&kuota=' . $listdospem["kuota"] . '&pendaftar=' . $listdospem["pendaftar"] . '" class="btn btn-primary btn-sm">Daftar Form</a></td>
+                            </tr>
+                        </table>
+                    </div>';
+        }
     } else {
         $sql = "SELECT id_dospem, namaDospem, kuota, pendaftar FROM dospem WHERE kuota !=0";
         $stmt = $db->prepare($sql);
