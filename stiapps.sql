@@ -3,9 +3,10 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 14, 2021 at 11:06 AM
--- Server version: 10.4.17-MariaDB
--- PHP Version: 7.4.13
+-- Generation Time: Jan 13, 2021 at 01:09 PM
+-- Server version: 10.1.38-MariaDB
+-- PHP Version: 7.3.2
+>>>>>>> 31f6ae298f383ea9c3f20356a3a23dc246f648a3
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -61,9 +62,6 @@ CREATE TABLE `judul` (
   `pengesahan` varchar(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
---
--- Dumping data for table `judul`
---
 
 INSERT INTO `judul` (`id_judul`, `id_mhs`, `id_dospem`, `penulis`, `judulprop`, `kategori`, `penerimaan`, `pengesahan`) VALUES
 (5, 1, 1, 'Jamalul Ikhsan', 'Test', 'Data Scientist', '0', '-'),
@@ -109,17 +107,19 @@ CREATE TABLE `mahasiswa` (
   `noInduk` varchar(255) NOT NULL,
   `password` varchar(255) NOT NULL,
   `namaMhs` varchar(255) NOT NULL,
-  `hasDaftar` tinyint(1) NOT NULL
+  `hasDaftar` tinyint(1) NOT NULL,
+  `isTolak` varchar(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `mahasiswa`
 --
 
-INSERT INTO `mahasiswa` (`id_mhs`, `noInduk`, `password`, `namaMhs`, `hasDaftar`) VALUES
-(1, '1810511099', '$2y$10$.8MwREIZvItopo.0bb7e3ukZauP8XpRUXAzcnpOqagmY0UTbLyzQi', 'Jamalul Ikhsan', 0),
-(2, '1810511108', '$2y$10$QFRM4xYuYCdJXQ7VW0qxM.5I5JkhT55D/pigrmXH6.E7rxyF4Pbgi', 'Aldilla Gardika Pramesta', 0),
-(5, '1810511031', '$2y$10$QpGD5dSalKUputyY8oNPnOYTIpk/fkpf/kpbGorFGUuaWyZMNNIcK', 'Jamalul Ikhsan', 1);
+
+INSERT INTO `mahasiswa` (`id_mhs`, `noInduk`, `password`, `namaMhs`, `hasDaftar`, `isTolak`) VALUES
+(1, '1810511099', '$2y$10$.8MwREIZvItopo.0bb7e3ukZauP8XpRUXAzcnpOqagmY0UTbLyzQi', 'Jamalul Ikhsan', 0, '0'),
+(2, '1810511108', '$2y$10$QFRM4xYuYCdJXQ7VW0qxM.5I5JkhT55D/pigrmXH6.E7rxyF4Pbgi', 'Aldilla Gardika Pramesta', 0, '0');
+
 
 --
 -- Indexes for dumped tables
@@ -168,7 +168,8 @@ ALTER TABLE `dospem`
 -- AUTO_INCREMENT for table `judul`
 --
 ALTER TABLE `judul`
-  MODIFY `id_judul` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=87;
+  MODIFY `id_judul` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=50;
+
 
 --
 -- AUTO_INCREMENT for table `kaprodi`

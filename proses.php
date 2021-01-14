@@ -32,7 +32,8 @@ if (isset($_POST)) {
     );
     $stmt->execute($params);
 
-    $sql = "UPDATE mahasiswa SET hasDaftar=1 WHERE id_mhs=$idMhs";
+    //$sql = "UPDATE mahasiswa SET hasDaftar=1 WHERE id_mhs=$idMhs";
+    $sql = "UPDATE mahasiswa SET hasDaftar=1, isTolak='0' WHERE id_mhs=$idMhs";
     $stmt = $db->prepare($sql);
     $stmt->execute();
 }
