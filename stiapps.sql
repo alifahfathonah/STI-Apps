@@ -1,14 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.5
+-- version 5.0.4
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 11, 2021 at 03:31 PM
--- Server version: 10.1.38-MariaDB
--- PHP Version: 7.3.2
+-- Generation Time: Jan 14, 2021 at 11:06 AM
+-- Server version: 10.4.17-MariaDB
+-- PHP Version: 7.4.13
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -42,8 +41,8 @@ CREATE TABLE `dospem` (
 --
 
 INSERT INTO `dospem` (`id_dospem`, `noInduk`, `password`, `namaDospem`, `kuota`, `pendaftar`) VALUES
-(1, 'noorfalih', '$2y$10$obpgtyBGTmPsItIZyeA/nuhK.65AxovUVY39hB1fpUvR1aRr2vPra', 'Noor Falih', 20, 0),
-(2, 'titinpramiyati', '$2y$10$k9eshInLF5FswMudscBF8OoZYjQL.yETLvok8AInkir1itqCX7JVW', 'Titin Pramiyati', 20, 0);
+(1, 'noorfalih', '$2y$10$obpgtyBGTmPsItIZyeA/nuhK.65AxovUVY39hB1fpUvR1aRr2vPra', 'Noor Falih', 4, 16),
+(2, 'titinpramiyati', '$2y$10$k9eshInLF5FswMudscBF8OoZYjQL.yETLvok8AInkir1itqCX7JVW', 'Titin Pramiyati', 5, 15);
 
 -- --------------------------------------------------------
 
@@ -76,7 +75,8 @@ INSERT INTO `judul` (`id_judul`, `id_mhs`, `id_dospem`, `penulis`, `judulprop`, 
 (11, 2, 1, 'Aldilla Gardika Pramesta', 'Mengidentifikasi Penyakit Padi', 'AI', '0', '-'),
 (12, 2, 1, 'Aldilla Gardika Pramesta', 'Mengidentifikasi Penyakit Padi', 'AI', '0', '-'),
 (13, 2, 1, 'Aldilla Gardika Pramesta', 'Mengidentifikasi Penyakit Padi', 'AI', '0', '-'),
-(14, 2, 1, 'Aldilla Gardika Pramesta', 'Mengidentifikasi Penyakit Padi', 'AI', '0', '-');
+(14, 2, 1, 'Aldilla Gardika Pramesta', 'Mengidentifikasi Penyakit Padi', 'AI', '0', '-'),
+(86, 5, 1, 'Jamalul Ikhsan', 'Data Mining Untuk Kebutuhan Dunia Industri Periklanan', 'AI', '-', '-');
 
 -- --------------------------------------------------------
 
@@ -118,7 +118,8 @@ CREATE TABLE `mahasiswa` (
 
 INSERT INTO `mahasiswa` (`id_mhs`, `noInduk`, `password`, `namaMhs`, `hasDaftar`) VALUES
 (1, '1810511099', '$2y$10$.8MwREIZvItopo.0bb7e3ukZauP8XpRUXAzcnpOqagmY0UTbLyzQi', 'Jamalul Ikhsan', 0),
-(2, '1810511108', '$2y$10$QFRM4xYuYCdJXQ7VW0qxM.5I5JkhT55D/pigrmXH6.E7rxyF4Pbgi', 'Aldilla Gardika Pramesta', 0);
+(2, '1810511108', '$2y$10$QFRM4xYuYCdJXQ7VW0qxM.5I5JkhT55D/pigrmXH6.E7rxyF4Pbgi', 'Aldilla Gardika Pramesta', 0),
+(5, '1810511031', '$2y$10$QpGD5dSalKUputyY8oNPnOYTIpk/fkpf/kpbGorFGUuaWyZMNNIcK', 'Jamalul Ikhsan', 1);
 
 --
 -- Indexes for dumped tables
@@ -167,7 +168,7 @@ ALTER TABLE `dospem`
 -- AUTO_INCREMENT for table `judul`
 --
 ALTER TABLE `judul`
-  MODIFY `id_judul` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id_judul` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=87;
 
 --
 -- AUTO_INCREMENT for table `kaprodi`
@@ -179,7 +180,7 @@ ALTER TABLE `kaprodi`
 -- AUTO_INCREMENT for table `mahasiswa`
 --
 ALTER TABLE `mahasiswa`
-  MODIFY `id_mhs` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_mhs` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- Constraints for dumped tables
