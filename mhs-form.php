@@ -223,6 +223,7 @@ if ($_SESSION["user"]["hasDaftar"] == 1) header('Location: mhs-listdosen.php');
                         var id_dospem   = $('#id_dospem').val();
                         var kuota       = $('#kuota').val();
                         var pendaftar   = $('#pendaftar').val();
+                        var page        = "halamanForm";  
                         
 
                             e.preventDefault();
@@ -248,7 +249,7 @@ if ($_SESSION["user"]["hasDaftar"] == 1) header('Location: mhs-listdosen.php');
                                     $.ajax({
                                     type: 'POST',
                                     url: 'proses.php',
-                                    data: {namaMhs: namaMhs,namaDospem: namaDospem,judul: judul,kategori: kategori,id_dospem : id_dospem,kuota:kuota,pendaftar:pendaftar},
+                                    data: {hlm : page ,namaMhs: namaMhs,namaDospem: namaDospem,judul: judul,kategori: kategori,id_dospem : id_dospem,kuota:kuota,pendaftar:pendaftar},
                                     success: function(data){
                                     // Swal.fire({
                                     //             'title': 'Successful',

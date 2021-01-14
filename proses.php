@@ -5,7 +5,7 @@ require_once("config.php");
 
 if ($_SESSION["user"]["hasDaftar"] == 1) header('Location: mhs-listdosen.php');
 
-if (isset($_POST)) {
+if (isset($_POST) && $_POST['hlm']=="halamanForm") {
     //header("Location: logout.php");
     $namaMhs = $_SESSION["user"]["namaMhs"];
     $judul = filter_input(INPUT_POST, 'judul', FILTER_SANITIZE_STRING);
@@ -37,7 +37,71 @@ if (isset($_POST)) {
     $stmt = $db->prepare($sql);
     $stmt->execute();
 }
+else if (isset($_POST) && $_POST['cek']=="terima") {
+    $idJudul = $_POST["idJudul"];
+    //header("Location: dosenpage.php");
+    $sql = "UPDATE judul SET penerimaan = '1' WHERE id_judul = $idJudul";
+    $stmt = $db->prepare($sql);
+    $stmt->execute();
+}
+else if (isset($_POST) && $_POST['cek']=="tolak") {
+    $idJudul = $_POST["idJudul"];
+    $idDospem = $_POST["idDospem"];
+    
+    //header("Location: dosenpage.php");
+    $sql = "UPDATE judul SET penerimaan = '0' WHERE id_judul = $idJudul";
+    $stmt = $db->prepare($sql);
+    $stmt->execute();
+
+    $sql = "UPDATE dospem SET kuota=(kuota+1), pendaftar=(pendaftar-1) WHERE id_dospem = $idDospem";
+    $stmt = $db->prepare($sql);
+    $stmt->execute();
+
+    $sql = "SELECT id_mhs FROM judul WHERE id_judul = $idJudul";
+    $stmt = $db->prepare($sql);
+    $stmt->execute();
+    $detailMhs = $stmt->fetch(PDO::FETCH_ASSOC);
+
+    $idMhs = $detailMhs["id_mhs"];
+    $sql = "UPDATE mahasiswa SET hasDaftar=0, isTolak='1' WHERE id_mhs = $idMhs";
+    $stmt = $db->prepare($sql);
+    $stmt->execute();
+}
+else if (isset($_POST) && $_POST['status']=="sah") {
+    $idJudul = $_POST["idJudul"];
+    //header("Location: kaprodipage.php");
+    $sql = "UPDATE judul SET pengesahan = '1' WHERE id_judul = $idJudul";
+    $stmt = $db->prepare($sql);
+    $stmt->execute();
+}
+else if (isset($_POST) && $_POST['status']=="tidaksah") {
+    $idJudul = $_POST["idJudul"];
+    //header("Location: kaprodipage.php");
+    $sql = "UPDATE judul SET pengesahan = '0' WHERE id_judul = $idJudul";
+    $stmt = $db->prepare($sql);
+    $stmt->execute();
+
+    $sql = "SELECT id_dospem FROM judul WHERE id_judul = $idJudul";
+    $stmt = $db->prepare($sql);
+    $stmt->execute();
+    $detailDospem = $stmt->fetch(PDO::FETCH_ASSOC); 
+
+    $idDospem = $detailDospem["id_dospem"];
+    $sql = "UPDATE dospem SET kuota=(kuota+1), pendaftar=(pendaftar-1) WHERE id_dospem = $idDospem";
+    $stmt = $db->prepare($sql);
+    $stmt->execute();
+
+    $sql = "SELECT id_mhs FROM judul WHERE id_judul = $idJudul";
+    $stmt = $db->prepare($sql);
+    $stmt->execute();
+    $detailMhs = $stmt->fetch(PDO::FETCH_ASSOC);
+
+    $idMhs = $detailMhs["id_mhs"];
+    $sql = "UPDATE mahasiswa SET hasDaftar=0, isTolak='1' WHERE id_mhs = $idMhs";
+    $stmt = $db->prepare($sql);
+    $stmt->execute();
+}
 else{
-    echo 'No data';
+    echo 'Data Tidak Ada';
     }
 ?>

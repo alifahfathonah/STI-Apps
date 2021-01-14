@@ -1,14 +1,14 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.4
+-- version 4.8.5
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
 -- Generation Time: Jan 13, 2021 at 01:09 PM
 -- Server version: 10.1.38-MariaDB
 -- PHP Version: 7.3.2
->>>>>>> 31f6ae298f383ea9c3f20356a3a23dc246f648a3
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -42,8 +42,8 @@ CREATE TABLE `dospem` (
 --
 
 INSERT INTO `dospem` (`id_dospem`, `noInduk`, `password`, `namaDospem`, `kuota`, `pendaftar`) VALUES
-(1, 'noorfalih', '$2y$10$obpgtyBGTmPsItIZyeA/nuhK.65AxovUVY39hB1fpUvR1aRr2vPra', 'Noor Falih', 4, 16),
-(2, 'titinpramiyati', '$2y$10$k9eshInLF5FswMudscBF8OoZYjQL.yETLvok8AInkir1itqCX7JVW', 'Titin Pramiyati', 5, 15);
+(1, 'noorfalih', '$2y$10$obpgtyBGTmPsItIZyeA/nuhK.65AxovUVY39hB1fpUvR1aRr2vPra', 'Noor Falih', 20, 0),
+(2, 'titinpramiyati', '$2y$10$k9eshInLF5FswMudscBF8OoZYjQL.yETLvok8AInkir1itqCX7JVW', 'Titin Pramiyati', 20, 0);
 
 -- --------------------------------------------------------
 
@@ -61,20 +61,6 @@ CREATE TABLE `judul` (
   `penerimaan` varchar(1) NOT NULL,
   `pengesahan` varchar(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
-
-INSERT INTO `judul` (`id_judul`, `id_mhs`, `id_dospem`, `penulis`, `judulprop`, `kategori`, `penerimaan`, `pengesahan`) VALUES
-(5, 1, 1, 'Jamalul Ikhsan', 'Test', 'Data Scientist', '0', '-'),
-(6, 2, 1, 'Aldilla Gardika Pramesta', 'Mengidentifikasi Penyakit Padi', 'AI', '1', '0'),
-(7, 2, 1, 'Aldilla Gardika Pramesta', 'Mengidentifikasi Penyakit Padi', 'AI', '1', '0'),
-(8, 1, 2, 'Jamalul Ikhsan', 'Test', 'Software Engineer', '1', '0'),
-(9, 2, 1, 'Aldilla Gardika Pramesta', 'Mengidentifikasi Penyakit Padi', 'AI', '0', '-'),
-(10, 2, 1, 'Aldilla Gardika Pramesta', 'Mengidentifikasi Penyakit Padi', 'AI', '0', '-'),
-(11, 2, 1, 'Aldilla Gardika Pramesta', 'Mengidentifikasi Penyakit Padi', 'AI', '0', '-'),
-(12, 2, 1, 'Aldilla Gardika Pramesta', 'Mengidentifikasi Penyakit Padi', 'AI', '0', '-'),
-(13, 2, 1, 'Aldilla Gardika Pramesta', 'Mengidentifikasi Penyakit Padi', 'AI', '0', '-'),
-(14, 2, 1, 'Aldilla Gardika Pramesta', 'Mengidentifikasi Penyakit Padi', 'AI', '0', '-'),
-(86, 5, 1, 'Jamalul Ikhsan', 'Data Mining Untuk Kebutuhan Dunia Industri Periklanan', 'AI', '-', '-');
 
 -- --------------------------------------------------------
 
@@ -115,11 +101,9 @@ CREATE TABLE `mahasiswa` (
 -- Dumping data for table `mahasiswa`
 --
 
-
 INSERT INTO `mahasiswa` (`id_mhs`, `noInduk`, `password`, `namaMhs`, `hasDaftar`, `isTolak`) VALUES
 (1, '1810511099', '$2y$10$.8MwREIZvItopo.0bb7e3ukZauP8XpRUXAzcnpOqagmY0UTbLyzQi', 'Jamalul Ikhsan', 0, '0'),
 (2, '1810511108', '$2y$10$QFRM4xYuYCdJXQ7VW0qxM.5I5JkhT55D/pigrmXH6.E7rxyF4Pbgi', 'Aldilla Gardika Pramesta', 0, '0');
-
 
 --
 -- Indexes for dumped tables
@@ -170,7 +154,6 @@ ALTER TABLE `dospem`
 ALTER TABLE `judul`
   MODIFY `id_judul` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=50;
 
-
 --
 -- AUTO_INCREMENT for table `kaprodi`
 --
@@ -181,7 +164,7 @@ ALTER TABLE `kaprodi`
 -- AUTO_INCREMENT for table `mahasiswa`
 --
 ALTER TABLE `mahasiswa`
-  MODIFY `id_mhs` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id_mhs` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- Constraints for dumped tables
