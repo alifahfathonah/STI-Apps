@@ -1,14 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.5
+-- version 5.0.4
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 13, 2021 at 01:09 PM
--- Server version: 10.1.38-MariaDB
--- PHP Version: 7.3.2
+-- Generation Time: Jan 16, 2021 at 12:46 AM
+-- Server version: 10.4.17-MariaDB
+-- PHP Version: 7.4.13
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -42,8 +41,9 @@ CREATE TABLE `dospem` (
 --
 
 INSERT INTO `dospem` (`id_dospem`, `noInduk`, `password`, `namaDospem`, `kuota`, `pendaftar`) VALUES
-(1, 'noorfalih', '$2y$10$obpgtyBGTmPsItIZyeA/nuhK.65AxovUVY39hB1fpUvR1aRr2vPra', 'Noor Falih', 20, 0),
-(2, 'titinpramiyati', '$2y$10$k9eshInLF5FswMudscBF8OoZYjQL.yETLvok8AInkir1itqCX7JVW', 'Titin Pramiyati', 20, 0);
+(1, '12345678', '12345678', 'Noor Falih', 19, 0),
+(2, '1234567', '1234567', 'Titin Pramiyati', 20, 0),
+(4, '123456', '123456', 'Mayanda Mega Santoni', 25, 0);
 
 -- --------------------------------------------------------
 
@@ -102,8 +102,11 @@ CREATE TABLE `mahasiswa` (
 --
 
 INSERT INTO `mahasiswa` (`id_mhs`, `noInduk`, `password`, `namaMhs`, `hasDaftar`, `isTolak`) VALUES
-(1, '1810511099', '$2y$10$.8MwREIZvItopo.0bb7e3ukZauP8XpRUXAzcnpOqagmY0UTbLyzQi', 'Jamalul Ikhsan', 0, '0'),
-(2, '1810511108', '$2y$10$QFRM4xYuYCdJXQ7VW0qxM.5I5JkhT55D/pigrmXH6.E7rxyF4Pbgi', 'Aldilla Gardika Pramesta', 0, '0');
+(7, '1810511099', '1810511099', 'Jamalul Ikhsan', 0, '0'),
+(8, '1810511108', '1810511108', 'Aldilla Gardika Pramesta', 0, '0'),
+(9, '1810511055', '1810511055', 'Lois Mikael Camdesus', 0, '0'),
+(10, '1810511057', '1810511057', 'Fajar Akbardipura', 0, '0'),
+(11, '1810511056', '1810511056', 'Hashfi Ashfahan', 0, '0');
 
 --
 -- Indexes for dumped tables
@@ -146,13 +149,13 @@ ALTER TABLE `mahasiswa`
 -- AUTO_INCREMENT for table `dospem`
 --
 ALTER TABLE `dospem`
-  MODIFY `id_dospem` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_dospem` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `judul`
 --
 ALTER TABLE `judul`
-  MODIFY `id_judul` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=50;
+  MODIFY `id_judul` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=61;
 
 --
 -- AUTO_INCREMENT for table `kaprodi`
@@ -164,7 +167,7 @@ ALTER TABLE `kaprodi`
 -- AUTO_INCREMENT for table `mahasiswa`
 --
 ALTER TABLE `mahasiswa`
-  MODIFY `id_mhs` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_mhs` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- Constraints for dumped tables
